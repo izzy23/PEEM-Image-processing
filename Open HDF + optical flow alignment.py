@@ -197,16 +197,11 @@ with h5py.File('Diamond images\medipix-321127.hdf', 'r') as f:
     data = np.array(f[key]["instrument"]["detector"]["data"])   #from file tree
 
     #array of images from file - at the two different energies
-    imgArrE1 = data[0][:]
-    imgArrE2 = data[1][:]
+    initialStackE1 = data[0][:]
+    intitalStackE2 = data[1][:]
 
-    #Used for applying final transformations to - so never converted to different datatype / rescaled
-    initialStackE1 = imgArrE1
-    intitalStackE2 = imgArrE2
-    
     #array of all energies
     entireStack = np.concatenate((initialStackE1, intitalStackE2))
-    entireStackInitial = entireStack
     
     #increases no of pixels in image - better resolution
     entireStack = interpolateImages(entireStack)
@@ -220,7 +215,6 @@ with h5py.File('Diamond images\medipix-321127.hdf', 'r') as f:
     ax2 = plt.subplot(2, 2, 2)
     ax3 = plt.subplot(2, 2, 3)
     ax4 = plt.subplot(2, 2, 4)
-
 
 
     #finds difference between drift corrected averages
