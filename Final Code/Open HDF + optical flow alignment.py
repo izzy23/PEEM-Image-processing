@@ -57,6 +57,7 @@ def interpolateImages(imgArray):
     return interpolatedImages
 
 def movingAverage(curve, radius):
+    #reigon considered
     window_size = 2 * radius + 1
     # Define the filter
     f = np.ones(window_size)/window_size
@@ -97,7 +98,7 @@ def driftCorrect(imgArr):
     transforms = np.zeros((len(imgArr)-1, 3), np.float32) 
     prevImg = firstImg
     
-    #REMOVED -2
+    #Loops through array of images
     for i in range(0, len(imgArr)-1):
         # Detect features in initial image
         prev_pts = cv2.goodFeaturesToTrack(firstImg,
@@ -180,7 +181,7 @@ def driftCorrect(imgArr):
         m[0,2] = dx
         m[1,2] = dy
  
-        # Apply affine wrapping to the given frame
+        # Apply affine transform to image
         finalImage = cv2.warpAffine(current, m, (w,h))
 
         images = images + [finalImage]
