@@ -132,10 +132,10 @@ for i in range(0, len(differenceImages)):
 
     #gets location of top and bottom of current square's intensity histogram.
     #From top and bottom 0.5% and 99.5% in this case
-    p2, p98 = np.percentile(croppedImage, (0.5, 99.5))
+    p1, p99 = np.percentile(croppedImage, (0.5, 99.5))
 
     #Any values above / below cutoff percentage are snapped to nearest
-    croppedImage = np.clip(croppedImage, p2, p98)
+    croppedImage = np.clip(croppedImage, p1, p99)
 
     #average intensity value after clipping
     mean = np.nanmean(croppedImage)

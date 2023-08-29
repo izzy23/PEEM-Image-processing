@@ -35,6 +35,7 @@ def rotateImg(img, da):
     return rotatedImg
 
 def align_images_multi_scale(image1, image2, num_scales=10):
+    
     def phase_correlation_align(image1, image2):
         # Convert images to grayscale and normalize
         gray_image1 = image1.astype(float) / 255
