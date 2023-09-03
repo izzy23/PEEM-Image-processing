@@ -85,3 +85,4 @@ plt.colorbar(ax)
 
 ax2.hist(image)
 plt.show()
+
